@@ -1,0 +1,11 @@
+<div class="modal-header text-center">
+  <h3 class="modal-title" style="margin:auto;">Notification</h3>
+</div>
+<div class="modal-body text-center">
+  <p style="font-size:18px;">Your event is about to start within a minute!</p> 
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" (click)="activeModal.close('snooze')">Snooze</button>
+  <button class="btn btn-danger" (click)="activeModal.close('dismiss')">Dismiss</button>
+</div>
+  

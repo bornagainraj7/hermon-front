@@ -1,0 +1,126 @@
+<div class="container-fluid">
+
+  <div class="two-space"></div>
+  <div class="card">
+    <div class="space"></div>
+    <div class="col">
+      <h4>Planner for, {{userFullName}}({{title}})</h4>
+    </div>
+    <div class="space"></div>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Previous</div>
+          <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">Today</div>
+          <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">Next</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div class="btn btn-primary" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">Month</div>
+          <div class="btn btn-primary" (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">Week</div>
+          <div class="btn btn-primary" (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">Day</div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div [ngSwitch]="view">
+
+      <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="allEvents"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)" >
+      </mwl-calendar-month-view>
+
+      <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="allEvents" >
+      </mwl-calendar-week-view>
+
+      <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="allEvents" >
+      </mwl-calendar-day-view>
+    </div>
+    <div class="space"></div>
+    <br /><br /><br />
+
+    <h3>
+      All events
+      <button class="btn btn-primary pull-right" [routerLink]="['/create-event', userId]">
+        <i class="fa fa-calendar-plus-o"></i> &nbsp; &nbsp;Add new
+      </button>
+      <div class="clearfix"></div>
+    </h3>
+
+    <div class="table-responsive" *ngIf="allEvents">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let event of allEventsReformed">
+            <td>
+              <span>{{event.title}}</span>
+            </td>
+            <td>
+              <span>{{event.start | date}}</span>
+            </td>
+            <td>
+              <span>{{event.end | date}}</span>
+            </td>
+            <td>
+              <span>{{event.startTime.hour}}:{{event.startTime.minute}}</span>
+            </td>
+            <td>
+              <span>{{event.endTime.hour}}:{{event.endTime.minute}}</span>
+            </td>
+            <td class="justify-content-around row">
+              <button class="btn btn-light" placement="left" ngbTooltip="Tooltip on left" [routerLink]="['/edit-event', event.eventId]">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button class="btn btn-danger" (click)="deleteEvent(event.eventId, event.userId)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- pagination -->
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSizePlanner" [(page)]="pagePlanner" [pageSize]="pageSizePlanner">
+        </ngb-pagination>
+      
+        <select class="custom-select" style="width: auto" [(ngModel)]="pageSizePlanner">
+          <option [ngValue]="2">2 items per page</option>
+          <option [ngValue]="5">5 items per page</option>
+          <option [ngValue]="10">10 items per page</option>
+        </select>
+      </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="allEvents == null">
+      <h4>No events for this user, try creating one!</h4>
+    </div>
+
+    
+  </div>
+  <div class="two-space"></div>
+
+
+
+</div>

@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+/* font-family: 'Source Sans Pro', sans-serif; */
+
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Source Sans Pro', sans-serif !important; background-color: #efefefc2 !important; }
+
+.card {
+    box-shadow: 1px 2px 4px #3f3f3f;
+}
+.space {
+    width: 100%;
+    display: block;
+    height: 30px;
+}
+.two-space {
+    width: 100%;
+    display: block;
+    height: 60px;
+}
+.three-space {
+    width: 100%;
+    display: block;
+    height: 90px;
+}
+
+.row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+/* section {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  section {
+    max-width: 90%;
+  }
+} */
+.red {
+  background-color: #e53935 !important;
+  color: #fff !important;
+}
+.purple {
+  background: #8E2DE2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff !important;
+}
+.blue {
+  color: #fff !important;
+  background: #0575E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.teal {
+  color: #fff !important;
+  background: #11998e;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.teal:hover {
+  background-color: #29ab8a !important;
+}
+.lime {
+  background-color: #c6ff00 !important;
+  color: #fff !important;
+}
+.green {
+  background-color: #76ff03 !important;
+  color: #fff !important;
+}
+.orange {
+  color: #fff !important;
+  background: #fe8c00;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f83600, #fe8c00);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f83600, #fe8c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

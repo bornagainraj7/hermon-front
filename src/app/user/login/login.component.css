@@ -1,0 +1,15 @@
+.card {
+    padding: 40px;
+}
+.btn {
+    justify-content: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.reset-link {
+    cursor: pointer;
+    color: #007bff !important;   
+}
+.form-buttons .btn {
+    margin-top: 10px;
+}
