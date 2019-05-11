@@ -12,7 +12,7 @@ import { EventModel } from './eventModel';
 })
 export class EventService {
 
-  private baseUrl = "http://localhost:4000/api/event";
+  private baseUrl = "http://api.hermon.ga/api/event";
 
   public allEvents = [];
   public allEventsUpdated = new Subject<any>();

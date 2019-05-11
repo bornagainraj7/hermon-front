@@ -12,7 +12,7 @@ export class UserService {
 
 
   public authToken: string;
-  public baseUrl = "http://localhost:4000/api/user";
+  public baseUrl = "http://api.hermon.ga/api/user";
 
   public userId: string;
   public userIdListener = new Subject<any>();

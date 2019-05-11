@@ -16,7 +16,7 @@ export class SocketService {
   private socket: any;
 
   constructor(public appRouter: Router, public http: HttpClient, private toastr: ToastrService, private modalService: NgbModal) { 
-    this.socket = io("http://localhost:4000/");
+    this.socket = io("http://api.hermon.ga/");
 
   }
   
@@ -42,7 +42,7 @@ export class SocketService {
     .then((result) => {
       
       closeReason = result;
-      
+
 
       let timer = setInterval(() => {
         eventTime -= 5000;
