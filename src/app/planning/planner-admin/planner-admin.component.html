@@ -52,13 +52,13 @@
     <div class="space"></div>
     <br /><br /><br />
 
-    <h3>
+    <h2>
       All events
       <button class="btn btn-primary pull-right" [routerLink]="['/create-event', userId]">
         <i class="fa fa-calendar-plus-o"></i> &nbsp; &nbsp;Add new
       </button>
       <div class="clearfix"></div>
-    </h3>
+    </h2>
 
     <div class="table-responsive" *ngIf="allEvents">
       <table class="table table-bordered">
@@ -113,7 +113,7 @@
         </select>
       </div>
     </div>
-    <div class="row justify-content-center" *ngIf="allEvents == null">
+    <div class="row justify-content-center" *ngIf="allEvents == null || allEvents.length == 0">
       <h4>No events for this user, try creating one!</h4>
     </div>
 

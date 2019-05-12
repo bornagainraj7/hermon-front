@@ -137,6 +137,7 @@ export class UserService {
   createUser (userData) {
     this.http.post<ResponseData>(`${this.baseUrl}/create`, userData)
     .subscribe((response) => {
+      console.log(response);
       if(response.data) {
         const authToken = response.data.authToken;
 
@@ -286,6 +287,9 @@ export class UserService {
         
       } else {
         console.log(response.message);
+        if (response.status == 400 || response.status == 401) {
+          this.logout();
+        }
       }
     }, (error) => {
       console.log(error);
@@ -307,6 +311,9 @@ export class UserService {
         
       } else {
         console.log(response.message);
+        if(response.status == 400 || response.status == 401) {
+          this.logout();
+        }
       }
     }, (error) => {
       console.log(error);

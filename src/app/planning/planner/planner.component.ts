@@ -30,7 +30,7 @@ export class PlannerComponent implements OnInit {
   // Datatable pagination
   page = 1;
   pageSize = 5;
-  collectionSize = this.allEvents.length;
+  collectionSize;
 
 
   constructor(private eventService: EventService, private userService: UserService, private route: ActivatedRoute) { }
@@ -52,7 +52,10 @@ export class PlannerComponent implements OnInit {
     this.allEventsListener = this.eventService.eventsUpdatedUser
     .subscribe((events) => {
       this.allEvents = events;
-      this.collectionSize = this.allEvents.length;
+      if (events) {
+        this.collectionSize = this.allEvents.length;
+      }
+      
     });
   }
 

@@ -76,6 +76,7 @@
                 <tr class="text-center">
                   <th scope="col">Full name</th>
                   <th scope="col">Username</th>
+                  <th scope="col">UserId</th>
                   <th scope="col">Country</th>
                   <th scope="col">View Planner</th>
                 </tr>
@@ -84,6 +85,7 @@
                 <tr *ngFor="let user of allNormalUsersReformed">
                   <td>{{user.fullName}}</td>
                   <td>{{user.username}}-{{user.title}}</td>
+                  <td>{{user.userId}}</td>
                   <td>{{user.country}}</td>
                   <td class="row justify-content-center">
                     <a [routerLink]="['/admin/planner', user.userId]" class="btn btn-primary">View</a>
@@ -118,6 +120,7 @@
                 <tr class="text-center">
                   <th scope="col">Full name</th>
                   <th scope="col">Username</th>
+                  <th scope="col">UserId</th>
                   <th scope="col">Country</th>
                   <th scope="col">View Planner</th>
                 </tr>
@@ -126,6 +129,7 @@
                 <tr *ngFor="let user of allAdminUsersReformed">
                   <td>{{user.fullName}}</td>
                   <td>{{user.username}}-{{user.title}}</td>
+                  <td>{{user.userId}}</td>
                   <td>{{user.country}}</td>
                   <td class="row justify-content-center">
                     <a [routerLink]="['/admin/planner', user.userId]" class="btn btn-primary">View</a>

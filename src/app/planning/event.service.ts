@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject, Subscription } from 'rxjs';
-import { distinctUntilChanged, take } from 'rxjs/operators';
+import { distinctUntilChanged, take, mergeAll, combineAll, last, first, audit } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ResponseData } from '../responseData.model';
 import { SocketService } from '../socket.service';
 import { EventModel } from './eventModel';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class EventService {
   public newEvents: EventModel[] = [];
 
 
-  constructor(private socketService: SocketService, private http: HttpClient, private appRouter: Router) { }
+  constructor(private socketService: SocketService, private http: HttpClient, private appRouter: Router, private userService: UserService) { }
 
   Notification(userId) {
     let eventTime;
@@ -149,6 +150,9 @@ export class EventService {
       } else {
         this.eventsForUser = null;
         this.eventsUpdatedUser.next(null);
+        if (response.status == 400 || response.status == 401) {
+          this.userService.logout();
+        }
       }
     }, (error) => {
       console.log(error);

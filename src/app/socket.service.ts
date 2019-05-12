@@ -37,40 +37,7 @@ export class SocketService {
     let eventTime = 59999;
 
     this.socket.emit('minute-before', userId);
-    
-    this.modalService.open(NotificationComponent).result
-    .then((result) => {
-      
-      closeReason = result;
 
-
-      let timer = setInterval(() => {
-        eventTime -= 5000;
-        if (eventTime < 5000) {
-          clearInterval(timer);
-        }
-
-        if(closeReason == 'snooze') {
-          this.modalService.open(NotificationComponent).result
-          .then((res) => {
-            reason = res;
-            if(res == 'dismiss') {
-              clearInterval(timer);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        } else {
-          clearInterval(timer);
-        }
-
-      }, 5000);
-
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   }
 
 
@@ -112,5 +79,7 @@ export class SocketService {
       });
     });
   }
+
+  
 
 }
