@@ -15,11 +15,11 @@ export class SocketService {
 
   private socket: any;
 
-  constructor(public appRouter: Router, public http: HttpClient, private toastr: ToastrService, private modalService: NgbModal) { 
+  constructor(public appRouter: Router, public http: HttpClient, private toastr: ToastrService, private modalService: NgbModal) {
     this.socket = io("http://api.hermon.ga/");
 
   }
-  
+
   toastSuccess(message) {
     this.toastr.success(message, "Success");
   }
@@ -71,7 +71,7 @@ export class SocketService {
   }
 
 
-  // Notifications 
+  // Notifications
   public allNotificationListener(userId) {
     return Observable.create((observer) => {
       this.socket.on(userId, (data) => {
@@ -80,6 +80,6 @@ export class SocketService {
     });
   }
 
-  
+
 
 }

@@ -33,10 +33,10 @@ export class EventService {
 
   Notification(userId) {
     let eventTime;
-    let minuteBefore; 
+    let minuteBefore;
     let eventOn;
     let newEvents = [];
-    
+
     this.getAllEventsForUser(userId);
     this.eventsForUserListener = this.eventsUpdatedUser
     .pipe(take(1))
@@ -53,7 +53,7 @@ export class EventService {
           }
         });
       }
-      
+
 
 
       for(let event of newEvents) {
@@ -200,7 +200,7 @@ export class EventService {
 
   deleteEvent(eventId, userId) {
     let data = null;
-    
+
     this.http.post<ResponseData>(`${this.baseUrl}/delete/${eventId}`, data)
     .subscribe((response) => {
       if(!response.error) {
@@ -211,7 +211,7 @@ export class EventService {
       // this.appRouter.navigate(['/admin/planner/', userId]);
 
       } else {
-        this.socketService.toastError(response.message);        
+        this.socketService.toastError(response.message);
       }
     }, (error) => {
       console.log(error);

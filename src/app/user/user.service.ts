@@ -56,11 +56,11 @@ export class UserService {
     const fullName = localStorage.getItem('fullName');
     const admin = localStorage.getItem('isAdmin');
     let isAdmin: boolean;
-    
+
     if (!token || !expiration) {
       return;
     }
-    
+
     if(admin == 'true') {
       isAdmin = true;
     } else {
@@ -117,7 +117,7 @@ export class UserService {
         this.adminStatusListener.next(this.isAdmin);
 
         this.setAuthTimer(expiresIn / 1000);
-        
+
         this.socketService.verifyUser(this.authToken);
         this.socketService.setUser(this.authToken);
 
@@ -133,7 +133,7 @@ export class UserService {
     }
   }
 
- 
+
   createUser (userData) {
     this.http.post<ResponseData>(`${this.baseUrl}/create`, userData)
     .subscribe((response) => {
@@ -182,11 +182,11 @@ export class UserService {
         this.socketService.toastError(response.message);
         console.log(response);
       }
-      
+
     }, (error) => {
       console.log(error);
     });
-    
+
   }
 
 
@@ -236,7 +236,7 @@ export class UserService {
       } else {
         this.socketService.toastError("Login error");
       }
-      
+
     }, (error) => {
       console.log(error);
       this.socketService.toastError("Login error");
@@ -265,7 +265,7 @@ export class UserService {
           this.allUsers = null;
           this.allUsersListener.next(null);
         }
-        
+
       }
     }, (error) => {
       console.log(error);
@@ -284,7 +284,7 @@ export class UserService {
           this.allAdminUsers = null;
           this.allAdminUsersListener.next(null);
         }
-        
+
       } else {
         console.log(response.message);
         if (response.status == 400 || response.status == 401) {
@@ -308,7 +308,7 @@ export class UserService {
           this.allNormalUsers = null;
           this.allNormalUsersListener.next(null);
         }
-        
+
       } else {
         console.log(response.message);
         if(response.status == 400 || response.status == 401) {
@@ -360,7 +360,7 @@ export class UserService {
       clearTimeout(this.tokenTimer);
       this.appRouter.navigate(['/login']);
       this.socketService.toastSuccess("Logout successful");
-      
+
     }, (error) => {
       console.log(error);
         this.socketService.toastError("Logout error");
