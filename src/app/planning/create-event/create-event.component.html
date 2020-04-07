@@ -10,9 +10,9 @@
         <h2 class="card-title text-center">Update Event</h2>
         <h6 class="card-subtitle mb-2 text-muted text-center">Wish to make changes in the event</h6>
       </div>
-  
+
       <div class="space"></div>
-      <form #eventForm="ngForm" (submit)="onSubmit(eventForm)">
+      <form #eventForm="ngForm" ngForm (submit)="onSubmit(eventForm)">
         <div class="form-group">
           <label>Title:</label>
           <input type="text" [(ngModel)]="title" name="title" class="form-control" placeholder="Title of event" required>
@@ -56,4 +56,4 @@
   <div class="two-space"></div>
 
 </div>
-  
+
